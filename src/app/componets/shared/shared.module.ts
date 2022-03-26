@@ -12,6 +12,10 @@ import { EmployeesFormComponent } from './employees-form/employees-form.componen
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    NavbarComponent,
+    EmployeesFormComponent
   ]
 })
 export class SharedModule { }
