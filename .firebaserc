@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-crud-2": {
+      "hosting": {
+        "angular-crud": [
+          "angular-crud-2"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-crud-2"
+  }
+}
