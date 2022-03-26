@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EditComponent } from './edit.component';
 
+import { EditRoutingModule } from './edit-routing.module';
+import { EditComponent } from './edit.component';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import { EditComponent } from './edit.component';
     EditComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    EditRoutingModule
   ]
 })
 export class EditModule { }

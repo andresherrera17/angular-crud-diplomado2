@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewComponent } from './new.component';
 
+import { NewRoutingModule } from './new-routing.module';
+import { NewComponent } from './new.component';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import { NewComponent } from './new.component';
     NewComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NewRoutingModule
   ]
 })
 export class NewModule { }

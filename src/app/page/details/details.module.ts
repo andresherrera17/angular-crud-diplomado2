@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DetailsComponent } from './details.component';
 
+import { DetailsRoutingModule } from './details-routing.module';
+import { DetailsComponent } from './details.component';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import { DetailsComponent } from './details.component';
     DetailsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DetailsRoutingModule
   ]
 })
 export class DetailsModule { }
