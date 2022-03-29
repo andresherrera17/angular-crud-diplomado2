@@ -1,9 +1,12 @@
-<router-outlet></router-outlet>
+<div style="min-height: 100vh; padding-bottom: 20px;">
+  <app-navbar></app-navbar>
+  <div class="container mt-5">
+    <h1>CRUD</h1>
+    <hr />
+    <router-outlet></router-outlet>
+  </div>
+</div>
 
-
-<!-- Crear un formulario de empleados, (id(autogenera), name,lastName,email,startDate)
-se debe validar cada campo que sea requerido con su mensaje
-
-se van un menu que redirija a list y a new
-
-van a colocar el componente del formulario en las paginas new y edit -->
+<!-- 
+  se debe validar cada campo que sea requerido con su mensaje 
+-->
