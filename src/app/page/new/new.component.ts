@@ -12,4 +12,7 @@ export class NewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addEmployee($event) {
+    console.log('Aqui esta el empleado', $event)
+  }
 }

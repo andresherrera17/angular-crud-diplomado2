@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IEmployee } from 'src/app/interfaces/employee.interface';
 
 @Component({
   selector: 'app-employees-form',
@@ -7,6 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./employees-form.component.css']
 })
 export class EmployeesFormComponent implements OnInit {
+
+  @Output() employee = new EventEmitter<IEmployee>();
 
   employeeForm: FormGroup;
 
@@ -35,7 +38,8 @@ export class EmployeesFormComponent implements OnInit {
       return;
     }
     //funcion para guardar
-    console.log(this.employeeForm.value);
+    const { value } = this.employeeForm;
+    this.employee.emit(value);
   }
 
   showWarning(controlName: string) {
