@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference } from '@angular/fire/compat/firestore'
+import { filter, map } from 'rxjs';
+import { Action } from 'rxjs/internal/scheduler/Action';
 import { IEmployee } from '../interfaces/employee.interface';
 
 @Injectable({
@@ -13,5 +15,17 @@ export class EmployeesService {
 
   addEmployee(employee: IEmployee): Promise<DocumentReference<IEmployee>> {
     return this._fireStore.collection<IEmployee>('employees').add(employee);
+  }
+
+  getEmployees$() {
+    return this._fireStore.collection<IEmployee>('employees').snapshotChanges()
+      .pipe(
+        map(data => data.map(doc => {
+          return {
+            id: doc.payload.doc.id,
+            ...doc.payload.doc.data() as IEmployee
+          }
+        }))
+      )
   }
 }
