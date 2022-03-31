@@ -28,4 +28,16 @@ export class EmployeesService {
         }))
       )
   }
+
+  getEmpoyee$(id: string) {
+    return this._fireStore.collection<IEmployee>('employees').doc(id).snapshotChanges()
+      .pipe(
+        map(data => {
+          return {
+            id: data.payload.id,
+            ...data.payload.data() as IEmployee
+          }
+        })
+      )
+  }
 }

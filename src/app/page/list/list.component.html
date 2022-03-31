@@ -1,1 +1,24 @@
-<p>list works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.lastName }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.startDate }}</td>
+      <td>
+        <button class="btn btn-primary btn-circle btn-sm espacio"> Editar</button>
+        <button class="btn btn-warning btn-circle btn-sm espacio" (click)="view(employee)"> Ver más</button>
+        <button class="btn btn-danger btn-circle btn-sm espacio"> Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
