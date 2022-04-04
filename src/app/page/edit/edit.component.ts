@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IEmployee } from 'src/app/interfaces/employee.interface';
 
 @Component({
   selector: 'app-edit',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
-  constructor() { }
+  employee: any = {};
+  constructor(
+    private router: Router
+  ) {
+    try {
+      this.employee = this.router.getCurrentNavigation()?.extras.state;
+    } catch (e) {
+      this.router.navigate(['list'])
+    }
+  }
 
   ngOnInit(): void {
   }

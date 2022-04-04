@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IEmployee } from 'src/app/interfaces/employee.interface';
 
@@ -10,6 +10,8 @@ import { IEmployee } from 'src/app/interfaces/employee.interface';
 export class EmployeesFormComponent implements OnInit {
 
   @Output() employee = new EventEmitter<IEmployee>();
+
+  @Input() employeeData = {} as IEmployee;
 
   employeeForm: FormGroup;
 

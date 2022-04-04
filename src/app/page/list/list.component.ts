@@ -31,6 +31,11 @@ export class ListComponent implements OnInit {
     })
   }
 
+  edit(employee: IEmployee) {
+    this.navigationExtras.state = employee;
+    this.router.navigate(['edit'], this.navigationExtras)
+  }
+
   view(employee: IEmployee) {
     this.navigationExtras.state = employee;
     this.router.navigate(['details'], this.navigationExtras)
