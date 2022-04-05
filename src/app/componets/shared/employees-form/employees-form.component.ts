@@ -12,6 +12,7 @@ export class EmployeesFormComponent implements OnInit {
   @Output() employee = new EventEmitter<IEmployee>();
 
   @Input() employeeData = {} as IEmployee;
+  @Input() edit: boolean = false;
 
   employeeForm: FormGroup;
 
@@ -22,11 +23,14 @@ export class EmployeesFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    if (this.edit) {
+      this.employeeForm.setValue(this.employeeData)
+    }
   }
 
   buildForm() {
     this.employeeForm = this.formBuilder.group({
+      id: [''],
       name: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

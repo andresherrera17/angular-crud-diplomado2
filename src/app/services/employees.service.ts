@@ -17,6 +17,10 @@ export class EmployeesService {
     return this._fireStore.collection<IEmployee>('employees').add(employee);
   }
 
+  editEmployee(employee: IEmployee) {
+    return this._fireStore.collection<IEmployee>('employees').doc(employee.id).update(employee);
+  }
+
   getEmployees$() {
     return this._fireStore.collection<IEmployee>('employees').snapshotChanges()
       .pipe(
@@ -40,4 +44,6 @@ export class EmployeesService {
         })
       )
   }
+
+
 }

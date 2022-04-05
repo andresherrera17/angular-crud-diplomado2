@@ -1,4 +1,4 @@
-<h3 class="text-center mb-4"> Nuevo Empleado </h3>
+<h3 class="text-center mb-4"> {{ (edit) ? 'Editar Empleado' : 'Nuevo Empleado' }} </h3>
 <hr />
 <form [formGroup]="employeeForm" class="row g-3" (submit)="onSubmit()">
   <div class="col-md-6">
@@ -32,6 +32,6 @@
   </div>
 
   <div class="col-12 mt-4">
-    <button type="submit" class="btn btn-primary">Agregar</button>
+    <button type="submit" class="btn btn-primary">{{ (edit)? 'Editar': 'Agregar' }}</button>
   </div>
 </form>
