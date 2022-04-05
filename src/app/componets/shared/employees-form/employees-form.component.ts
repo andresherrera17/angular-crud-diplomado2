@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IEmployee } from 'src/app/interfaces/employee.interface';
 
 @Component({
@@ -24,13 +24,19 @@ export class EmployeesFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.edit) {
-      this.employeeForm.setValue(this.employeeData)
+      this.loadValues();
     }
+  }
+
+  loadValues() {
+    this.name.setValue(this.employeeData.name);
+    this.lastName.setValue(this.employeeData.lastName);
+    this.email.setValue(this.employeeData.email);
+    this.startDate.setValue(this.employeeData.startDate);
   }
 
   buildForm() {
     this.employeeForm = this.formBuilder.group({
-      id: [''],
       name: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -51,5 +57,10 @@ export class EmployeesFormComponent implements OnInit {
   showWarning(controlName: string) {
     return this.employeeForm.get(controlName)!.invalid && this.employeeForm.get(controlName)!.touched;
   }
+
+  get name(): AbstractControl { return this.employeeForm.get('name') };
+  get lastName(): AbstractControl { return this.employeeForm.get('lastName') };
+  get email(): AbstractControl { return this.employeeForm.get('email') };
+  get startDate(): AbstractControl { return this.employeeForm.get('startDate') };
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BlockUIService } from 'ng-block-ui';
 import { IEmployee } from 'src/app/interfaces/employee.interface';
 import { EmployeesService } from 'src/app/services/employees.service';
 
@@ -11,24 +12,32 @@ import { EmployeesService } from 'src/app/services/employees.service';
 export class EditComponent implements OnInit {
 
   employee: any = {};
+  id: string = "";
   constructor(
     private router: Router,
-    private _serviceEmployee: EmployeesService
+    private _serviceEmployee: EmployeesService,
+    private _blockUIService: BlockUIService
   ) {
-    this.employee = this.router.getCurrentNavigation()?.extras.state;
-    if (!this.employee?.id) {
-      this.router.navigate(['list']);
+    try {
+      this.employee = this.router.getCurrentNavigation()?.extras.state;
+      this.id = this.employee.id;
+    } catch (e) {
+      this.router.navigate(['list'])
     }
 
   }
 
   edit(evento: any) {
-    this._serviceEmployee.editEmployee(evento)
+    debugger;
+    this._blockUIService.start('block-target', 'Editando Empleado');
+    this._serviceEmployee.editEmployee(this.id, evento)
       .then(() => {
         alert('Se edito el empleado exitosamente');
+        this._blockUIService.stop('block-target');
         this.router.navigate(['list']);
       })
       .catch((err) => {
+        this._blockUIService.stop('block-target');
         console.error(err);
       })
   }
